@@ -1,0 +1,528 @@
+{
+  "environment": {
+    "python": "3.11.9",
+    "sklearn": "1.9.1",
+    "generated_at": "2026-11-17T17:33:08+00:00"
+  },
+  "dataset": {
+    "rows_raw": 235795,
+    "rows_after_exact_dedup": 235370,
+    "rows_invalid_url": 8,
+    "rows_final": 235362,
+    "phishing": 100512,
+    "legitimate": 134850,
+    "unique_registered_domains": 197706
+  },
+  "naive_full_url_baseline": {
+    "threshold": 0.4090844140353779,
+    "n_iter": 148,
+    "val": {
+      "n": 34882,
+      "positives": 14590,
+      "roc_auc": 0.9985525008623244,
+      "pr_auc": 0.9988683724113716,
+      "precision": 0.9997245748123665,
+      "recall": 0.9951336531871144,
+      "f1": 0.9974238312781232,
+      "fpr": 0.00019712201852946975,
+      "confusion": {
+        "tn": 20288,
+        "fp": 4,
+        "fn": 71,
+        "tp": 14519
+      }
+    },
+    "test": {
+      "n": 33972,
+      "positives": 13631,
+      "roc_auc": 0.9983833070403165,
+      "pr_auc": 0.9986828201199036,
+      "precision": 0.9993362831858407,
+      "recall": 0.9941310248697821,
+      "f1": 0.9967268581515942,
+      "fpr": 0.0004424561231011258,
+      "confusion": {
+        "tn": 20332,
+        "fp": 9,
+        "fn": 80,
+        "tp": 13551
+      }
+    },
+    "test_bare_homepage_urls_only": {
+      "n": 30537,
+      "positives": 10196,
+      "roc_auc": 0.9978386483195915,
+      "pr_auc": 0.9979378423166738,
+      "precision": 0.9991111111111111,
+      "recall": 0.9921537857983523,
+      "f1": 0.9956202942768565,
+      "fpr": 0.0004424561231011258,
+      "confusion": {
+        "tn": 20332,
+        "fp": 9,
+        "fn": 80,
+        "tp": 10116
+      }
+    },
+    "split_sizes": {
+      "train": 166508,
+      "val": 34882,
+      "test": 33972
+    },
+    "permutation_importance_top15": [
+      {
+        "feature": "is_https",
+        "pr_auc_drop": 0.1755
+      },
+      {
+        "feature": "path_len",
+        "pr_auc_drop": 0.13368
+      },
+      {
+        "feature": "reg_domain_len",
+        "pr_auc_drop": 0.00056
+      },
+      {
+        "feature": "n_dots_url",
+        "pr_auc_drop": 0.00054
+      },
+      {
+        "feature": "url_len",
+        "pr_auc_drop": 0.00054
+      },
+      {
+        "feature": "max_consonant_run_host",
+        "pr_auc_drop": 0.00048
+      },
+      {
+        "feature": "digit_ratio_url",
+        "pr_auc_drop": 0.00025
+      },
+      {
+        "feature": "tld_is_risky",
+        "pr_auc_drop": 0.00019
+      },
+      {
+        "feature": "n_subdomain_levels",
+        "pr_auc_drop": 0.00011
+      },
+      {
+        "feature": "reg_domain_n_hyphens",
+        "pr_auc_drop": 8e-05
+      },
+      {
+        "feature": "n_digits_host",
+        "pr_auc_drop": 7e-05
+      },
+      {
+        "feature": "n_hyphens_url",
+        "pr_auc_drop": 4e-05
+      },
+      {
+        "feature": "n_dots_host",
+        "pr_auc_drop": 3e-05
+      },
+      {
+        "feature": "mean_token_len",
+        "pr_auc_drop": 2e-05
+      },
+      {
+        "feature": "brand_outside_reg_domain",
+        "pr_auc_drop": 2e-05
+      }
+    ]
+  },
+  "dataset_artifacts": {
+    "is_https": {
+      "legit_mean": 1.0,
+      "phish_mean": 0.4863
+    },
+    "path_depth": {
+      "legit_mean": 0.0,
+      "phish_mean": 0.5856
+    },
+    "query_len": {
+      "legit_mean": 0.0,
+      "phish_mean": 5.1554
+    },
+    "url_len": {
+      "legit_mean": 27.2286,
+      "phish_mean": 45.8669
+    },
+    "n_subdomain_levels": {
+      "legit_mean": 1.0303,
+      "phish_mean": 1.1229
+    },
+    "tld_is_common": {
+      "legit_mean": 0.6855,
+      "phish_mean": 0.487
+    },
+    "share_host_starts_www": {
+      "legit": 1.0,
+      "phish": 0.4151
+    },
+    "share_https": {
+      "legit": 1.0,
+      "phish": 0.4863
+    },
+    "share_with_no_path_or_query": {
+      "legit": 1.0,
+      "phish": 0.7184
+    }
+  },
+  "lexical": {
+    "threshold": 0.38313146881706234,
+    "n_iter": 114,
+    "val": {
+      "n": 29641,
+      "positives": 9896,
+      "roc_auc": 0.8212366525258484,
+      "pr_auc": 0.8024857160137809,
+      "precision": 0.8740674425544613,
+      "recall": 0.5919563459983832,
+      "f1": 0.7058681768887818,
+      "fpr": 0.04274499873385667,
+      "confusion": {
+        "tn": 18901,
+        "fp": 844,
+        "fn": 4038,
+        "tp": 5858
+      }
+    },
+    "test": {
+      "n": 29640,
+      "positives": 9819,
+      "roc_auc": 0.8231241769864321,
+      "pr_auc": 0.8063479346980102,
+      "precision": 0.8645180107918915,
+      "recall": 0.6037274671555148,
+      "f1": 0.7109618613576397,
+      "fpr": 0.046869481862670904,
+      "confusion": {
+        "tn": 18892,
+        "fp": 929,
+        "fn": 3891,
+        "tp": 5928
+      }
+    },
+    "dataset": {
+      "domains": 197600,
+      "domains_with_conflicting_labels_dropped": 106,
+      "phishing": 65520,
+      "legitimate": 132080
+    },
+    "split_sizes": {
+      "train": 138319,
+      "val": 29641,
+      "test": 29640
+    },
+    "permutation_importance_top15": [
+      {
+        "feature": "d_on_private_suffix",
+        "pr_auc_drop": 0.18803
+      },
+      {
+        "feature": "d_tld_is_risky",
+        "pr_auc_drop": 0.07164
+      },
+      {
+        "feature": "d_n_digits",
+        "pr_auc_drop": 0.0417
+      },
+      {
+        "feature": "d_len",
+        "pr_auc_drop": 0.02269
+      },
+      {
+        "feature": "d_tld_len",
+        "pr_auc_drop": 0.01699
+      },
+      {
+        "feature": "d_tld_is_common",
+        "pr_auc_drop": 0.01282
+      },
+      {
+        "feature": "d_n_labels",
+        "pr_auc_drop": 0.01086
+      },
+      {
+        "feature": "d_n_hyphens",
+        "pr_auc_drop": 0.01075
+      },
+      {
+        "feature": "d_n_suspicious_keywords",
+        "pr_auc_drop": 0.00622
+      },
+      {
+        "feature": "d_tld_is_cc",
+        "pr_auc_drop": 0.00612
+      },
+      {
+        "feature": "d_max_consonant_run",
+        "pr_auc_drop": 0.00555
+      },
+      {
+        "feature": "d_vowel_ratio",
+        "pr_auc_drop": 0.00418
+      },
+      {
+        "feature": "d_digit_letter_switches",
+        "pr_auc_drop": 0.00403
+      },
+      {
+        "feature": "d_max_repeat_run",
+        "pr_auc_drop": 0.0029
+      },
+      {
+        "feature": "d_max_digit_run",
+        "pr_auc_drop": 0.00212
+      }
+    ],
+    "test_slice_common_tld_only": {
+      "n": 18309,
+      "positives": 4673,
+      "roc_auc": 0.7318915115430971,
+      "pr_auc": 0.6380365683850651,
+      "precision": 0.818847209515096,
+      "recall": 0.383051572865397,
+      "f1": 0.5219419740486951,
+      "fpr": 0.029040774420651217,
+      "confusion": {
+        "tn": 13240,
+        "fp": 396,
+        "fn": 2883,
+        "tp": 1790
+      }
+    },
+    "test_slice_private_suffix_hosts": {
+      "n": 3420,
+      "positives": 3409,
+      "roc_auc": 0.9651057361529641,
+      "pr_auc": 0.9998786417699587,
+      "precision": 0.9976587649985367,
+      "recall": 1.0,
+      "f1": 0.998828010547905,
+      "fpr": 0.7272727272727273,
+      "confusion": {
+        "tn": 3,
+        "fp": 8,
+        "fn": 0,
+        "tp": 3409
+      }
+    }
+  },
+  "full_model": {
+    "n_rows": 4000,
+    "split_sizes": {
+      "train": 2800,
+      "val": 600,
+      "test": 600
+    },
+    "queried_between": [
+      "2026-11-17T15:13:40+00:00",
+      "2026-11-17T17:30:56+00:00"
+    ],
+    "lookup_coverage": {
+      "legit": {
+        "whois_found_rate": 0.956,
+        "whois_not_found_rate": 0.019,
+        "whois_error_rate": 0.025,
+        "dns_resolves_rate": 0.9615,
+        "dns_error_rate": 0.0025
+      },
+      "phish": {
+        "whois_found_rate": 0.63,
+        "whois_not_found_rate": 0.3495,
+        "whois_error_rate": 0.018,
+        "dns_resolves_rate": 0.537,
+        "dns_error_rate": 0.0015
+      }
+    },
+    "lexical_only": {
+      "threshold": 0.35229830632108444,
+      "n_iter": 66,
+      "val": {
+        "n": 600,
+        "positives": 301,
+        "roc_auc": 0.8268091867687419,
+        "pr_auc": 0.8676375013881232,
+        "precision": 0.7310126582278481,
+        "recall": 0.7674418604651163,
+        "f1": 0.7487844408427877,
+        "fpr": 0.2842809364548495,
+        "confusion": {
+          "tn": 214,
+          "fp": 85,
+          "fn": 70,
+          "tp": 231
+        }
+      },
+      "test": {
+        "n": 600,
+        "positives": 301,
+        "roc_auc": 0.8420649118323538,
+        "pr_auc": 0.8847808733392185,
+        "precision": 0.7191358024691358,
+        "recall": 0.7740863787375415,
+        "f1": 0.7456,
+        "fpr": 0.30434782608695654,
+        "confusion": {
+          "tn": 208,
+          "fp": 91,
+          "fn": 68,
+          "tp": 233
+        }
+      }
+    },
+    "enrichment_only": {
+      "threshold": 0.49223875660366095,
+      "n_iter": 84,
+      "val": {
+        "n": 600,
+        "positives": 301,
+        "roc_auc": 0.9564661829575885,
+        "pr_auc": 0.9647701512023344,
+        "precision": 0.9335664335664335,
+        "recall": 0.8870431893687708,
+        "f1": 0.909710391822828,
+        "fpr": 0.06354515050167224,
+        "confusion": {
+          "tn": 280,
+          "fp": 19,
+          "fn": 34,
+          "tp": 267
+        }
+      },
+      "test": {
+        "n": 600,
+        "positives": 301,
+        "roc_auc": 0.9577606417849087,
+        "pr_auc": 0.9619740787469944,
+        "precision": 0.9084745762711864,
+        "recall": 0.8903654485049833,
+        "f1": 0.8993288590604027,
+        "fpr": 0.0903010033444816,
+        "confusion": {
+          "tn": 272,
+          "fp": 27,
+          "fn": 33,
+          "tp": 268
+        }
+      }
+    },
+    "full": {
+      "threshold": 0.4409237507156527,
+      "n_iter": 100,
+      "val": {
+        "n": 600,
+        "positives": 301,
+        "roc_auc": 0.9513216813520151,
+        "pr_auc": 0.9610200268413354,
+        "precision": 0.9143835616438356,
+        "recall": 0.8870431893687708,
+        "f1": 0.9005059021922428,
+        "fpr": 0.08361204013377926,
+        "confusion": {
+          "tn": 274,
+          "fp": 25,
+          "fn": 34,
+          "tp": 267
+        }
+      },
+      "test": {
+        "n": 600,
+        "positives": 301,
+        "roc_auc": 0.9641107123412482,
+        "pr_auc": 0.970466727540614,
+        "precision": 0.8918032786885246,
+        "recall": 0.9036544850498339,
+        "f1": 0.8976897689768977,
+        "fpr": 0.11036789297658862,
+        "confusion": {
+          "tn": 266,
+          "fp": 33,
+          "fn": 29,
+          "tp": 272
+        }
+      },
+      "permutation_importance_top15": [
+        {
+          "feature": "n_ns_records",
+          "pr_auc_drop": 0.05185
+        },
+        {
+          "feature": "d_on_private_suffix",
+          "pr_auc_drop": 0.03208
+        },
+        {
+          "feature": "domain_age_days",
+          "pr_auc_drop": 0.03071
+        },
+        {
+          "feature": "n_txt_records",
+          "pr_auc_drop": 0.00494
+        },
+        {
+          "feature": "whois_found",
+          "pr_auc_drop": 0.00344
+        },
+        {
+          "feature": "n_mx_records",
+          "pr_auc_drop": 0.00219
+        },
+        {
+          "feature": "a_ttl",
+          "pr_auc_drop": 0.00209
+        },
+        {
+          "feature": "d_tld_is_risky",
+          "pr_auc_drop": 0.00199
+        },
+        {
+          "feature": "d_entropy",
+          "pr_auc_drop": 0.00148
+        },
+        {
+          "feature": "d_digit_ratio",
+          "pr_auc_drop": 0.00145
+        },
+        {
+          "feature": "d_longest_token",
+          "pr_auc_drop": 0.00104
+        },
+        {
+          "feature": "days_to_expiry",
+          "pr_auc_drop": 0.00102
+        },
+        {
+          "feature": "d_suffix_n_parts",
+          "pr_auc_drop": 0.0007
+        },
+        {
+          "feature": "days_since_update",
+          "pr_auc_drop": 0.00059
+        },
+        {
+          "feature": "d_max_consonant_run",
+          "pr_auc_drop": 0.00058
+        }
+      ]
+    },
+    "full_on_live_domains_only": {
+      "n": 422,
+      "positives": 153,
+      "roc_auc": 0.9444565930461405,
+      "pr_auc": 0.9320597603350338,
+      "precision": 0.8571428571428571,
+      "recall": 0.8235294117647058,
+      "f1": 0.84,
+      "fpr": 0.07806691449814127,
+      "confusion": {
+        "tn": 248,
+        "fp": 21,
+        "fn": 27,
+        "tp": 126
+      }
+    }
+  }
+}
