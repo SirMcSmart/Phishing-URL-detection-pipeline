@@ -1,0 +1,40 @@
+# Phishing URL Detection Pipeline configuration.
+seed: 42
+
+data:
+  phiusiil_url: "https://archive.ics.uci.edu/static/public/967/phiusiil+phishing+url+dataset.zip"
+  raw_dir: data/raw/phiusiil
+  csv_name: PhiUSIIL_Phishing_URL_Dataset.csv
+  processed_dir: data/processed
+
+split:
+  # Grouped by registered domain so one domain never sits in both train and test.
+  test_size: 0.15
+  val_size: 0.15
+
+enrichment:
+  # How many URLs (balanced across classes) to enrich with live WHOIS + DNS for
+  # the "full" model. Lookups are cached in data/processed/enrichment_cache.jsonl,
+  # so re-runs only query new domains.
+  sample_size: 4000
+  workers: 8
+  timeout_seconds: 5.0
+  nameservers: ["1.1.1.1", "8.8.8.8"]   # [] = use the system resolver
+
+model:
+  # sklearn HistGradientBoostingClassifier (gradient-boosted trees, native NaN support)
+  learning_rate: 0.08
+  max_iter: 600
+  max_leaf_nodes: 63
+  min_samples_leaf: 40
+  l2_regularization: 1.0
+  early_stopping: true
+  validation_fraction: 0.1
+  n_iter_no_change: 30
+  # Decision threshold is picked on the validation split. "f1" maximises F1;
+  # a number like 0.01 picks the lowest threshold whose validation FPR <= that value.
+  threshold_strategy: f1
+
+artifacts:
+  models_dir: models
+  outputs_dir: outputs

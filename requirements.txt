@@ -1,0 +1,13 @@
+# Runtime dependencies (API + training). Pinned for reproducibility.
+dnspython==2.9.2
+fastapi==0.163.1
+joblib==1.6.0
+numpy==2.4.6
+pandas==3.1.1
+pydantic==2.14.3
+python-whois==0.9.6
+PyYAML==6.0.3
+requests==2.34.2
+scikit-learn==1.9.1
+tldextract==5.4.0
+uvicorn==0.54.0

@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishdetect"
+version = "1.0.0"
+description = "Phishing URL detection: gradient boosting over lexical, WHOIS and DNS features, served as a REST API"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["network: test performs live DNS/RDAP lookups (deselect with -m 'not network')"]
+addopts = "-m 'not network'"
