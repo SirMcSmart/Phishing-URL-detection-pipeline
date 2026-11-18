@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    image: phishing-url-detection:latest
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      PHISHDETECT_RATE_LIMIT: "120"
+      # PHISHDETECT_API_KEY: set via an .env file, never commit it
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
